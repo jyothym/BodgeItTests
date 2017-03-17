@@ -25,13 +25,6 @@ public class BrowserFactory {
 		Proxy proxy = new Proxy();
 
 		switch(browserName) {
-		case "chromeproxy":
-			ChromeDriverManager.getInstance().setup();
-			proxy.setHttpProxy("localhost:3337");
-			capabilities.setCapability("proxy", proxy);
-			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-			driver = new ChromeDriver(capabilities);
-			break;
 
 		case "chrome":
 			ChromeDriverManager.getInstance().setup();
@@ -41,7 +34,7 @@ public class BrowserFactory {
 			break;
 
 		case "firefox":
-			String proxyIP = "8090";
+			String proxyIP = "localhost:8090";
 			proxy.setHttpProxy(proxyIP)
 			    .setFtpProxy(proxyIP)
 			    .setSslProxy(proxyIP)
