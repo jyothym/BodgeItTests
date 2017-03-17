@@ -11,9 +11,10 @@ import tw.java.utils.BaseTest;
 public class bodgeItTests extends BaseTest  {
 	String site ="http://localhost:8080/bodgeit/";
 
+
 	@Test(priority = 1)
 	public void testaddToBasket() throws InterruptedException {
-		homePage.lnkHome.click();	
+		clickMenu("Home");
 		Assert.assertEquals(homePage.getPageTitle(), "Our Best Deals!");
 		homePage.selectAProduct();
 		Assert.assertEquals(homePage.getPageTitle(), "Product");		
@@ -23,7 +24,7 @@ public class bodgeItTests extends BaseTest  {
 
 	@Test(priority = 2)
 	public void testFeedback() throws InterruptedException {
-		homePage.lnkContactUs.click();
+		clickMenu("Contact Us");
 		Assert.assertEquals(homePage.getPageTitle(), "Contact Us");
 		homePage.addFeedback("Testing...");
 		Assert.assertEquals(homePage.getCofirmationMessage(), "Thank you for your feedback:");
@@ -53,6 +54,10 @@ public class bodgeItTests extends BaseTest  {
 		WebElement link = driver.findElement(By.linkText(linkText));
 		link.click();
 		Assert.assertEquals(site + page, driver.getCurrentUrl());
+	}
+	
+	public void clickMenu(String menu) {
+		driver.findElement(By.linkText(menu)).click();
 	}
 
 }

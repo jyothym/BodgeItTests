@@ -66,31 +66,9 @@ public class BodgeIt {
 	@FindBy(linkText ="Register")
 	public WebElement lnkRegister;
 	
-	
 
-	public void clickMenu(String menu) {
-		switch (menu) {
-		case "Home": 
-			lnkHome.click();
-			break;
-		case "About Us":
-			lnkAboutUs.click();
-			break;
-		case "Contact Us":
-			lnkContactUs.click();
-			break;
-		case "Login":
-			lnkLogin.click();
-			break;
-		case "Your Basket":
-			lnkYourBasket.click();
-			break;
-		case "Search":
-			lnkSearch.click();
-			break;
-		}
-		return;
-	}
+
+
 	
 	public void selectAProduct() {
 		lnkProduct.click();
@@ -136,7 +114,5 @@ public class BodgeIt {
 	public void logout() {
 		lnkLogout.click();
 	}
-	
-
 
 }

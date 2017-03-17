@@ -24,28 +24,24 @@ public class BrowserFactory {
 		Dimension d;
 		Proxy proxy = new Proxy();
 
-		switch(browserName) {
-
-		case "chrome":
+		if (browserName.equals("chrome")) {
 			ChromeDriverManager.getInstance().setup();
 			options.addArguments("no-sandbox");
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			driver = new ChromeDriver(capabilities);
-			break;
 
-		case "firefox":
+		} else if (browserName.equals("firefox")) {
 			String proxyIP = "localhost:8090";
 			proxy.setHttpProxy(proxyIP)
-			    .setFtpProxy(proxyIP)
-			    .setSslProxy(proxyIP)
-			    .setNoProxy("");
+			.setFtpProxy(proxyIP)
+			.setSslProxy(proxyIP)
+			.setNoProxy("");
 
 			FirefoxDriverManager.getInstance().setup();
 			capabilities.setCapability(CapabilityType.PROXY, proxy);
 			driver = new FirefoxDriver(capabilities);
-			break;
-
 		}
+
 		d = new Dimension(768,1024);  //iPad
 		driver.manage().window().setSize(d);
 		return driver;
