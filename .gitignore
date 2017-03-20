@@ -1,6 +1,3 @@
-target/classes
-target/htmlReports/*.html
-test-output
 bin
 .classpath
 .settings
