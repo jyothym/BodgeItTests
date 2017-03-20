@@ -9,8 +9,6 @@ import org.testng.annotations.Test;
 import tw.java.utils.BaseTest;
 
 public class bodgeItTests extends BaseTest  {
-	String site ="http://localhost:8080/bodgeit/";
-
 
 	@Test(priority = 1)
 	public void testaddToBasket() throws InterruptedException {
@@ -28,7 +26,6 @@ public class bodgeItTests extends BaseTest  {
 		Assert.assertEquals(homePage.getPageTitle(), "Contact Us");
 		homePage.addFeedback("Testing...");
 		Assert.assertEquals(homePage.getCofirmationMessage(), "Thank you for your feedback:");
-		//Assert.assertEquals(homePage.getFeedbackPreview(), "Testing...");
 	}
 
 	@Test(priority = 3)
@@ -53,7 +50,7 @@ public class bodgeItTests extends BaseTest  {
 	public void checkMenu(String linkText, String page) {
 		WebElement link = driver.findElement(By.linkText(linkText));
 		link.click();
-		Assert.assertEquals(site + page, driver.getCurrentUrl());
+		Assert.assertEquals("http://localhost:8080/bodgeit/" + page, driver.getCurrentUrl());
 	}
 	
 	public void clickMenu(String menu) {

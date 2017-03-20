@@ -47,7 +47,7 @@ public class FormBasedAuthentication {
 
 	private static void listAuthInformation(ClientApi clientApi) throws ClientApiException {
 		// Check out which authentication methods are supported by the API
-		List<String> supportedMethodNames = new LinkedList<>();
+		List<String> supportedMethodNames = new LinkedList<String>();
 		ApiResponseList authMethodsList = (ApiResponseList) clientApi.authentication.getSupportedAuthenticationMethods();
 		for (ApiResponse authMethod : authMethodsList.getItems()) {
 			supportedMethodNames.add(((ApiResponseElement) authMethod).getValue());
