@@ -18,7 +18,7 @@ public class BaseTest extends TestListenerAdapter {
 	public String browser = "firefox";
 	ClientApi clientApi = new ClientApi("localhost", 8090, null);
 	Core core = new Core(clientApi);
-	CreateHTMLReport c = new CreateHTMLReport();
+	CreateHTMLReport report = new CreateHTMLReport();
 
 	@BeforeClass
 	public void intializeDriver(Object[] arg0) throws Exception {
@@ -42,7 +42,7 @@ public class BaseTest extends TestListenerAdapter {
 
 		System.out.println("Generating HTML Report...");
 		String alerts_report = new String(core.htmlreport());
-		c.generateHTMLFile(alerts_report);
+		report.generateHTMLFile(alerts_report);
 
 		System.out.println("Shutting down ZAP...");
 		clientApi.core.shutdown();
