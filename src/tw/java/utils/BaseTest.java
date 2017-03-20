@@ -2,7 +2,6 @@ package tw.java.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -41,20 +40,15 @@ public class BaseTest extends TestListenerAdapter {
 
 	}
 
-	@AfterMethod
-	public void afterMethod() throws Exception {
-
-	}
-
 	@AfterClass
 	public void closeBrowser() throws ClientApiException{
 		driver.manage().deleteAllCookies();
 		driver.quit();
 		
 //		System.out.println("XML report output");
-//        String alerts_report = new String(core.xmlreport());
+//      String alerts_report = new String(core.xmlreport());
 
-		System.out.println("HTML report output");
+		System.out.println("Generating HTML Report...");
         String alerts_report = new String(core.htmlreport());
         c.generateHTMLFile(alerts_report);
         
