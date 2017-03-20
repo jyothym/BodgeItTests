@@ -23,12 +23,13 @@ public class BaseTest extends TestListenerAdapter {
 	private static final String ZAP_API_KEY = null; // Change this if you have set the apikey in ZAP via Options / API
 	ClientApi clientApi = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
 	Core core = new Core(clientApi);
+	CreateHTMLReport c = new CreateHTMLReport();
 	
 	@BeforeClass
 	public void intializeDriver(Object[] arg0) throws Exception {
 		new ProcessBuilder("/Applications/OWASP ZAP.app/Contents/MacOS/OWASP ZAP.sh").start(); //, "-daemon", "-port" + ZAP_PORT
 		System.out.println("Starting ZAP...");
-		Thread.sleep(15000);
+		Thread.sleep(10000);
 		
 		driver = BrowserFactory.getBrowser(browser);
 		driver.get("http://localhost:8080/bodgeit/");
@@ -50,9 +51,12 @@ public class BaseTest extends TestListenerAdapter {
 		driver.manage().deleteAllCookies();
 		driver.quit();
 		
-		System.out.println("XML report output");
-        String alerts_report = new String(core.xmlreport());
-        System.out.println(alerts_report);
+//		System.out.println("XML report output");
+//        String alerts_report = new String(core.xmlreport());
+
+		System.out.println("HTML report output");
+        String alerts_report = new String(core.htmlreport());
+        c.generateHTMLFile(alerts_report);
         
         System.out.println("Shutting down ZAP...");
         clientApi.core.shutdown();
