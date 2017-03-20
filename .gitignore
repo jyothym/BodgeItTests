@@ -1,3 +1,7 @@
+target
+target/htmlReports/*.html
+target/classes
+test-output
 bin
 .classpath
 .settings
