@@ -50,7 +50,7 @@ public class bodgeItTests extends BaseTest  {
 	public void checkMenu(String linkText, String page) {
 		WebElement link = driver.findElement(By.linkText(linkText));
 		link.click();
-		Assert.assertEquals("http://localhost:8080/bodgeit/" + page, driver.getCurrentUrl());
+		Assert.assertEquals(BaseURL + page, driver.getCurrentUrl());
 	}
 	
 	public void clickMenu(String menu) {

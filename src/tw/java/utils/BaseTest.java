@@ -19,6 +19,7 @@ public class BaseTest extends TestListenerAdapter {
 	ClientApi clientApi = new ClientApi("localhost", 8090, null);
 	Core core = new Core(clientApi);
 	CreateHTMLReport report = new CreateHTMLReport();
+	public String BaseURL = "http://localhost:8080/bodgeit/";
 
 	@BeforeClass
 	public void intializeDriver(Object[] arg0) throws Exception {
@@ -27,7 +28,7 @@ public class BaseTest extends TestListenerAdapter {
 		Thread.sleep(10000);
 
 		driver = BrowserFactory.getBrowser(browser);
-		driver.get("http://localhost:8080/bodgeit/");
+		driver.get(BaseURL);
 	}
 
 	@BeforeMethod

@@ -3,15 +3,16 @@ package tw.java.utils;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class CreateHTMLReport {
-	static String fileName = new SimpleDateFormat("ddMMMyy_hhmm").format(new Date(0));
-	private static final String FILENAME = System.getProperty("user.dir") + "/target/htmlReports/"+ fileName + ".html";
-	
+	static String fileName = new SimpleDateFormat("ddMMMyy_hhmm").format(new Date());
+	private static String FILENAME = System.getProperty("user.dir") + "/target/htmlReports/"+ fileName + ".html";
+
 	public void generateHTMLFile(String content) {
+
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 
